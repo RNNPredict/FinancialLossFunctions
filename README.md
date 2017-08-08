@@ -1,2 +1,6 @@
 # FinancialLossFunctions
-I will propose a new way of thinking about financial loss functions.  
+I use this financial loss function to train my deep learning financial time-series models that downside risk is not equal to upside risk.   This may seem somewhat obvious however some banks still apply a squared-error loss function on financial returns. Squared-error does not account for the sinange of the predicted return. Therefore, if you bet on a predictive model returning 1% the bank squared-error loss function would penalize an actual return of -1% equally as bad as a prediction of 3%. This does not work because the actual return of 3% would have caused the investor to gain money while the actual return of -1% loses money.  
+
+This a Bayes loss function which accounts for the sinange of the return.  This allows the deep learning model to learn when the predictive financial return is close to 0% the trading signal shall be 0 and therefore the model should take no position in the asset.  (A squared-error loss function cannot correctly score the uncertainty of financial predictions close to 0% 
+
+For the very determined I also included a loss function which account for the signage of returns using Euclidean distance and shift-bias.  This loss functions is more complex than Bayes
